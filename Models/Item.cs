@@ -5,9 +5,11 @@ namespace Source.Models
     public abstract class Item
     {
         public int ProductId { get; }
+        public decimal UnitPrice { get; }
         public int Quantity { get; protected set; }
+        public decimal TotalPrice => Quantity * UnitPrice;
 
-        protected Item(int productId, int quantity)
+        protected Item(int productId, int quantity, decimal unitPrice)
         {
             if(productId <= 0)
             {
@@ -17,8 +19,13 @@ namespace Source.Models
             {
                 throw new Exception("Quantity must be greater than 0.");
             }
+            if(unitPrice < 0)
+            {
+                throw new Exception("Unit price must can not be less than 0.");
+            }            
             ProductId = productId;
             Quantity = quantity;
+            UnitPrice = unitPrice;
         }
 
 

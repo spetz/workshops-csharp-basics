@@ -18,7 +18,7 @@ namespace Source.Services
         public Result<Order> CompleteOrder(Cart cart)
             => _actionHandler.Handle<Order>(() => 
             {
-                Console.WriteLine("Processing order...");
+                Console.WriteLine("Processing an order...");
                 User user = _database.Users.GetById(cart.UserId);
                 Order order = new Order(1);
                 foreach(CartItem item in cart.Items)
@@ -30,6 +30,7 @@ namespace Source.Services
                 _database.SaveChanges();
 
                 return order;
-            }, ex => Console.WriteLine("Error when processing order."));
+            }, 
+            ex => Console.WriteLine("Ther was an error when processing an order."));
     }
 }

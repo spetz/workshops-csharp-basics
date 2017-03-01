@@ -29,8 +29,9 @@ namespace Source.Services
             return user;
         }
 
-        public Cart GetCart(string email) => _userCarts[email];
+        public Cart GetCart(string email) =>  _userCarts[email];
 
-        public Product GetProduct(string name) => _database.Products.First(x => x.Name == name);
+        public Product GetProduct(string name) => 
+            _database.Products.First(x => x.Name.ToLowerInvariant() == name.ToLowerInvariant());
     }
 }

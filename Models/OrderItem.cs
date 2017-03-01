@@ -2,7 +2,8 @@ namespace Source.Models
 {
     public class OrderItem : Item
     {
-        public OrderItem(int productId, int quantity) : base(productId, quantity)
+        public OrderItem(int productId, int quantity, decimal unitPrice) 
+            : base(productId, quantity, unitPrice)
         {
         }
     }

@@ -9,7 +9,7 @@ namespace Source.Services
         {
             try
             {
-                Console.WriteLine("Executing action...");
+                Console.WriteLine("Executing an action...");
                 var result = action();
 
                 return Result<T>.Success(result);

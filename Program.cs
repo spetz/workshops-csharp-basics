@@ -5,7 +5,7 @@
         public static void Main(string[] args)
         {
             Shop shop = new Shop();
-            shop.Test();
+            shop.BuyStuff();
         }
     }
 }

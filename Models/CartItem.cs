@@ -2,7 +2,8 @@ namespace Source.Models
 {
     public class CartItem : Item
     {
-        public CartItem(Product product, int quantity = 1) : base(product.Id, quantity)
+        public CartItem(int productId, int quantity, decimal unitPrice) 
+            : base(productId, quantity, unitPrice)
         {
         }
     }

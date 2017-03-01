@@ -19,7 +19,7 @@ namespace Source.Models
             CartItem cartItem = _items.FirstOrDefault(x => x.ProductId == product.Id);
             if(cartItem == null)
             {
-                _items.Add(new CartItem(product, quantity));
+                _items.Add(new CartItem(product.Id, quantity, product.Price));
                 return;
             }
             cartItem.IncreaseQuantity();

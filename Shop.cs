@@ -7,7 +7,7 @@ namespace Source
 {
     public class Shop
     {
-        public void Test()
+        public void BuyStuff()
         {
             IDatabase database = CreateDatabase();
             IActionHandler actionHandler = new ActionHandler();
@@ -20,7 +20,7 @@ namespace Source
             Product ball = shoppingService.GetProduct("Ball");
             cart.AddProduct(ball);
             cart.AddProduct(ball);
-            cart.AddProduct(ball);
+            cart.AddProduct(shoppingService.GetProduct("Monitor"));
 
             Result<Order> completedOrder = orderProcessor.CompleteOrder(cart);
             if(completedOrder.IsSuccessful)
@@ -36,14 +36,15 @@ namespace Source
         {
             IDatabase database = new InMemoryDatabase();
             database.Connect();
-            Console.WriteLine("Creating database...");
+            Console.WriteLine("Creating a database...");
             User user = new User(1, "user1@email.com", "secret");
             user.IncreaseFunds(1000);
             database.Users.Add(user);
             database.Products.Add(new Product(1, "Ball", 50));
-            database.Products.Add(new Product(2, "Axe", 200));
+            database.Products.Add(new Product(2, "Hammer", 200));
             database.Products.Add(new Product(3, "Notebook", 3000));
             database.Products.Add(new Product(4, "Monitor", 550));
+            database.Products.Add(new Product(5, "Bike", 700));
 
             return database;
         }

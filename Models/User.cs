@@ -9,6 +9,7 @@ namespace Source.Models
         public string Email { get; protected set; }
         public string Password { get; protected set; }
         public string FullName { get; set; }
+        public Address Address { get; set; }
         public int Age { get; protected set; }
         public bool IsActive { get; private set; }
         public DateTime UpdatedAt { get; private set; }
