@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Source.Models;
 using Source.Persistence;
 
@@ -20,7 +21,8 @@ namespace Source.Services
             {
                 Console.WriteLine("Processing an order...");
                 User user = _database.Users.GetById(cart.UserId);
-                Order order = new Order(1);
+                int orderId = _database.Orders.Any() ? _database.Orders.Max(x => x.Id) + 1 : 1;
+                Order order = new Order(orderId);
                 foreach(CartItem item in cart.Items)
                 {
                     Product product = _database.Products.GetById(item.ProductId);
